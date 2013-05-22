@@ -18,3 +18,4 @@ Crafty.c('CustomControls', {
 		return this;
 	}
 });
+

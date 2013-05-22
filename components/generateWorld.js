@@ -18,6 +18,12 @@ function generateWorld() {
 							this.animate("wind", 80);
 					});
 			}
+
+			// draw a bug and only within the bushes using randRandge
+			if(i > 0 && i < 24 && j > 0 && j < 19 && Crafty.randRange(0, 52) > 49) {
+				//Crafty.e("2D, Canvas, bug, AI, Solid").attr({x: i * 16, y: j * 16, z:1}).moveChance(Math.random()*0.5);
+				Crafty.e("2D, Canvas, bug, AI, Solid").attr({x: i * 16, y: j * 16, z:1});
+			}
 		}
 	}
 	
@@ -37,4 +43,5 @@ function generateWorld() {
 		Crafty.e("2D, Canvas, wall_right, bush"+Crafty.randRange(1,2))
 			.attr({x: 384, y: i * 16, z: 2});
 	}
+
 }
