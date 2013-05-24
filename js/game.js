@@ -1,5 +1,9 @@
 window.onload = function() {
 
+	$score = 0;
+	$seconds = 0;
+	$text_css = { 'font-size': '24px', 'font-family': 'Arial', 'color': 'white', 'text-align': 'center' }
+
 	//start crafty
 	Crafty.init(400, 320);
 	Crafty.canvas();
@@ -18,12 +22,12 @@ window.onload = function() {
 
 		// Seconds Elapsed
 		Crafty.e("Seconds, DOM, 2D, Text")
-			.attr({ x: 315, y: 20, w: 100, h: 20, points: 0 })
+			.attr({ x: 315, y: 20, w: 100, h: 20, secs: 0 })
 			.text("0 Secs");
 
   		var t;
   		function displaySecondsElapsed() {
-  			Crafty("Seconds").each(function () { this.text(++this.points + " Secs") });
+  			Crafty("Seconds").each(function () { this.text(++this.secs + " Secs"); $seconds = this.secs;  });
 		    t = setTimeout(function() {
 		        displaySecondsElapsed();
 		    }, 1000);
@@ -62,7 +66,7 @@ window.onload = function() {
 					Crafty.scene('Completed');
 				}
 				hit[0].obj.destroy();
-				Crafty("Score").each(function () { this.text(++this.points-1 + " Points") });
+				Crafty("Score").each(function () { this.text(++this.points-1 + " bugs"); $score = this.points-1; console.log("score=" + $score); });
 			}).onHit("wall_left", function() {
 				this.x += this._speed;
 				this.stop();

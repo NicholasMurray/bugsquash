@@ -1,6 +1,6 @@
 //method to randomy generate the map
 function generateWorld() {
-	var max_number_of_bugs = 2;
+	var max_number_of_bugs = 5;
 	//generate the grass along the x-axis
 	for(var i = 0; i < 25; i++) {
 		//generate the grass along the y-axis
