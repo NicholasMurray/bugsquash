@@ -1,4 +1,5 @@
 window.onload = function() {
+
 	//start crafty
 	Crafty.init(400, 320);
 	Crafty.canvas();
@@ -7,7 +8,7 @@ window.onload = function() {
 	Crafty.scene("loading");
 	
 	Crafty.scene("main", function() {
-	
+
 		generateWorld();
 
 		//Score boards
@@ -57,8 +58,11 @@ window.onload = function() {
 			})
 			.collision()
 			.onHit("bug", function(hit) {
+				if (Crafty('bug').length === 1) {
+					Crafty.scene('Completed');
+				}
 				hit[0].obj.destroy();
-				Crafty("Score").each(function () { this.text(++this.points + " Points") });
+				Crafty("Score").each(function () { this.text(++this.points-1 + " Points") });
 			}).onHit("wall_left", function() {
 				this.x += this._speed;
 				this.stop();
@@ -73,7 +77,7 @@ window.onload = function() {
 				this.stop();
 			});
 
-					//create our bug entity with some premade components
+		//create our bug entity with some premade components
 		bug = Crafty.e("2D, Canvas, bug, Controls, Animate, Collision")
 			.attr({x: 160, y: 144, z: 1})
 			.animate("walk_left", 6, 4, 8)

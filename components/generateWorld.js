@@ -1,5 +1,6 @@
 //method to randomy generate the map
 function generateWorld() {
+	var max_number_of_bugs = 2;
 	//generate the grass along the x-axis
 	for(var i = 0; i < 25; i++) {
 		//generate the grass along the y-axis
@@ -21,8 +22,10 @@ function generateWorld() {
 
 			// draw a bug and only within the bushes using randRandge
 			if(i > 0 && i < 24 && j > 0 && j < 19 && Crafty.randRange(0, 52) > 49) {
-				//Crafty.e("2D, Canvas, bug, AI, Solid").attr({x: i * 16, y: j * 16, z:1}).moveChance(Math.random()*0.5);
-				Crafty.e("2D, Canvas, bug, AI, Solid").attr({x: i * 16, y: j * 16, z:1});
+				if (Crafty('bug').length < max_number_of_bugs) {
+					//Crafty.e("2D, Canvas, bug, AI, Solid").attr({x: i * 16, y: j * 16, z:1}).moveChance(Math.random()*0.5);
+					Crafty.e("2D, Canvas, bug, AI, Solid").attr({x: i * 16, y: j * 16, z:1});
+				}
 			}
 		}
 	}
